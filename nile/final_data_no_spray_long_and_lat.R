@@ -4,8 +4,9 @@
 final_data<-function(data_dir,dat,filter_distance=1,col_remove=c("")){
   
   weather=read.csv(file.path(data_dir, "weather.csv"))
-  
+  if(!is.null(dat$Date)){
   dat$Date=as.Date(dat$Date)
+  }
   weather=weather[weather$Station==1,]
   weather$Date=as.Date(weather$Date,format="%m/%d/%Y")
   
@@ -35,10 +36,7 @@ final_data<-function(data_dir,dat,filter_distance=1,col_remove=c("")){
   #variable removals
   
   dat$AddressAccuracy=NULL
-  dat$Address=NULL
-  dat$Street=NULL
-  dat$AddressNumberAndStreet=NULL
-  dat$Block=NULL
+  #dat$Block=NULL
   #dat$Longitude=NULL
   #dat$Latitude=NULL
   
@@ -55,7 +53,7 @@ final_data<-function(data_dir,dat,filter_distance=1,col_remove=c("")){
   
   dat_final=sqldf("SELECT dat.*,weather.* FROM dat LEFT OUTER JOIN weather ON weather.Date==dat.Date")
   
-  dat_final$Date=NULL
+  
   
   return(dat_final)
 }

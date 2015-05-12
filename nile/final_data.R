@@ -82,7 +82,6 @@ weather$SnowFall=NULL
 
 dat_final=sqldf("SELECT dat.*,weather.* FROM dat LEFT OUTER JOIN weather ON weather.Date==dat.Date")
 
-dat_final$Date=NULL
 
 return(dat_final)
 }
