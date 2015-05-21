@@ -53,7 +53,7 @@ final_data<-function(data_dir,dat,filter_distance=1,col_remove=c("")){
   
   dat_final=sqldf("SELECT dat.*,weather.* FROM dat LEFT OUTER JOIN weather ON weather.Date==dat.Date")
   
-  
+  dat_final$Date=NULL
   
   return(dat_final)
 }

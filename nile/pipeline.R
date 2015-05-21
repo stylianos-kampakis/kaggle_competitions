@@ -22,12 +22,14 @@ source(file.path(data_dir,"prepare_data.R"))
 
 #conducts some additional preprocessing that must be conducted (removal of some useless columns etc.)
 source(file.path(data_dir,"prepare_data_after_loading.R"))
+source(file.path(data_dir,"add_na_to_new_factorlevels.R"))
 
 
 source(file.path(data_dir,"trainmodel.R"))
-source(file.path(data_dir,"add_na_to_new_factorlevels.R"))
 
-res=predict(gbmFit1,test,type="prob",na.action=na.pass)
+res=predict(gbmFit1,test,type="prob",na.action=NULL)
 res=data.frame(id=seq(1,length(res$Yes)),WnvPresent=res$Yes)
+#res=data.frame(id=seq(1,length(res)),WnvPresent=res)
+
 
 write.csv(res,file.path(data_dir,"results.csv"),row.names=FALSE)

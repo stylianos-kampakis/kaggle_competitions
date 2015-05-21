@@ -34,15 +34,8 @@ final_data<-function(data_dir,dat,filter_distance=1){
   
   #variable removals
 
-  dat$AddressAccuracy=NULL
-  dat$Address=NULL
-  dat$Street=NULL
-  dat$AddressNumberAndStreet=NULL
-  dat$Block=as.factor(dat$Block)
-  dat$Longitude=NULL
-  dat$Latitude=NULL
   
-  dat$Trap=NULL
+  
   
   weather=weather[weather$Station==1,]
   weather$Station=NULL

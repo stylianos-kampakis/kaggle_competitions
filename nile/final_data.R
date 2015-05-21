@@ -63,18 +63,11 @@ for(i in 1:nrow(dat)){
 #variable removals
 
 dat$id2=NULL
-dat$AddressAccuracy=NULL
-dat$Address=NULL
-dat$Street=NULL
-dat$AddressNumberAndStreet=NULL
-dat$Block=as.factor(dat$Block)
-dat$Longitude=NULL
-dat$Latitude=NULL
 
-dat$Trap=NULL
 
 weather=weather[weather$Station==1,]
 weather$Station=NULL
+
 weather$Depth=NULL
 weather$Water1=NULL
 weather$SnowFall=NULL

@@ -17,5 +17,5 @@ nums <- sapply(train, is.numeric)
 nums=train[,nums]
 
 nums=nums[complete.cases(nums),]
-
+library(corrplot)
 corrplot(cor(nums))
